@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.static(__dirname)); // 👈 IMPORTANT
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "main.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/card", (req, res) => {
