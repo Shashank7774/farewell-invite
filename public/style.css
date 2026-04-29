@@ -50,7 +50,7 @@ h2 {
 #name {
     font-size: 22px;
     color: #ffffff;
-    margin-top: 10px;
+    margin-top: 5px;
 
     text-shadow:
         0 0 5px rgba(255, 255, 255, 0.6),
@@ -61,7 +61,7 @@ h2 {
 #role {
     font-size: 15px;
     color: #ddd;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border: #1a0026;
 }
 
