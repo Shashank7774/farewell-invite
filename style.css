@@ -1,0 +1,125 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: #000;
+}
+
+/* CARD */
+.card {
+    width: 360px;
+    height: 580px;
+    margin: 40px auto;
+    border-radius: 20px;
+    background: url('bg.jpg') no-repeat center/cover;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+/* LIGHT OVERLAY (NOT DARK) */
+.overlay {
+    height: 100%;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    /* very light */
+    
+}
+
+/* TITLE */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    color: #121211;
+    letter-spacing: 2px;
+
+    /* GLOW */
+    text-shadow:
+        0 0 5px #c3b87d,
+        0 0 10px #c3b87d,
+        0 0 20px rgba(255, 215, 0, 0.7);
+
+    margin-bottom: 15px;
+}
+
+/* NAME */
+#name {
+    font-size: 22px;
+    color: #ffffff;
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.6),
+        0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* ROLE */
+#role {
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 15px;
+    border: #1a0026;
+}
+
+/* EVENT */
+.event {
+    font-family: 'Cursive', serif;
+    font-size: 28px;
+    margin: 25px 0;
+    color: #FFD700;
+
+    text-shadow:
+        0 0 8px #FFD700,
+        0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* DETAILS */
+.card p {
+    margin: 10px 0;
+    font-size: 15px;
+    color: #f1f1f1;
+
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* REMOVE BUTTON FROM CARD */
+.overlay button {
+    display: none;
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+
+    background: linear-gradient(45deg, gold, orange);
+    color: black;
+    cursor: pointer;
+
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .card {
+        background: black !important;
+        box-shadow: none !important;
+    }
+}

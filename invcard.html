@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at top, #0a0a0a, #000);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+
+            background: /*linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),*/
+                url('bg.jpg') center/cover no-repeat;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 0 15px rgba(255, 0, 222, 0.6),
+                0 0 30px rgba(0, 246, 255, 0.4);
+
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: clamp(14px, 3vw, 18px);
+            font-family: cursive;
+        }
+
+        p {
+            margin: 4px 0;
+            font-size: clamp(12px, 2.8vw, 14px);
+        }
+
+        .name {
+            font-size: clamp(20px, 5vw, 26px);
+            color: rgb(227, 168, 227);
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 9px rgb(227, 168, 227);
+            font-weight: 700;
+        }
+
+        .role {
+            opacity: 0.8;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+
+        .event {
+            font-size: clamp(26px, 6vw, 34px);
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            color: rgb(227, 168, 227);
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgb(227, 168, 227);
+            margin: 10px 0;
+        }
+
+        .tagline {
+            font-weight: 700;
+            font-size: clamp(13px, 3vw, 16px);
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px #ddd, 0 0 20px #ddd;
+        }
+
+        .actions {
+            width: 100%;
+            max-width: 420px;
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .card h3{
+            font-family: 'Cinzel', serif;
+    font-size: 25px;
+    margin-top: 20px;
+    text-shadow: 0 0 10px #ddd, 0 0 20px #ddd;
+        }
+        .card p{
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px #ddd, 0 0 20px #ddd;
+            color: antiquewhite;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #00f6ff, #ff00de);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00f6ff, 0 0 25px #ff00de;
+        }
+
+        /* 📱 Small devices */
+        @media (max-width: 350px) {
+            .card {
+                padding: 15px;
+            }
+        }
+
+        /* 💻 Large screens */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+
+            .card {
+                max-width: 450px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card" id="card">
+        <h3>SACRED HEART DEGREE <br> COLLEGE</h3>
+        <p>Department of Computer Science</p>
+
+        <p>Invites</p>
+
+        <h2 class="name" id="name"></h2>
+        <p class="role" id="role"></p>
+
+        <div class="event">YATRAANT...</div>
+        <p class="tagline">The Beginning of a New Journey</p>
+
+        <p>4 May, Monday, 10:30 AM</p>
+        <p><b>Venue:-</b> <i>SHIMT ATRIUM</i></p>
+    </div>
+
+    <div class="actions">
+        <button class="btn" onclick="download()">Download</button>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+        const p = new URLSearchParams(window.location.search);
+
+        if (!p.get("name")) location = "/";
+
+        document.getElementById("name").innerText = p.get("name");
+        document.getElementById("role").innerText = p.get("role");
+
+        function download() {
+            const card = document.getElementById("card");
+
+            html2canvas(card, {
+                scale: 4,
+                useCORS: true
+            }).then(canvas => {
+                let link = document.createElement("a");
+                link.download = "farewell-invite.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farewell RSVP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1a0026, #000);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container {
+    background: rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    text-align:center;
+    box-shadow: 0 0 30px rgba(255,0,222,0.3);
+    width:350px;
+}
+
+h1 {
+    color:#ff00de;
+    text-shadow:0 0 15px #ff00de;
+}
+
+select, input {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ff00de;
+    background:transparent;
+    color:white;
+    background-color: #1a0026;
+}
+
+button {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background: linear-gradient(45deg,#ff00de,#00f6ff);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00f6ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Farewell 2K26</h1>
+    <p>✨ Yatraa Ant – The Final Journey ✨</p>
+
+    <select id="role"></select>
+    <select id="name"></select>
+
+    <button onclick="go()">RSVP ✨</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+let data = {};
+const role = document.getElementById("role");
+const name = document.getElementById("name");
+
+fetch("data.json")
+.then(res => res.json())
+.then(json => {
+    data = json;
+
+    role.innerHTML = '<option>Select Role</option>';
+    for(let r in data){
+        role.innerHTML += `<option>${r}</option>`;
+    }
+});
+
+role.addEventListener("change", ()=>{
+    name.innerHTML = '<option>Select Name</option>';
+    data[role.value].forEach(n=>{
+        name.innerHTML += `<option>${n}</option>`;
+    });
+});
+
+function go(){
+    if(!name.value || !role.value){
+        alert("Select both!");
+        return;
+    }
+
+    // 🎉 Confetti
+    confetti({
+        particleCount:150,
+        spread:100
+    });
+
+    setTimeout(()=>{
+        window.location.href =
+        `/card?name=${encodeURIComponent(name.value)}&role=${encodeURIComponent(role.value)}&event=YATRAAANT`;
+    },1500);
+}
+</script>
+
+</body>
+</html>
